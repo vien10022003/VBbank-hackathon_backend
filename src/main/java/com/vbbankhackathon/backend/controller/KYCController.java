@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/kyc")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class KYCController {
     
     @Autowired

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/insurance-policies")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class InsurancePolicyController {
     
     @Autowired

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/accounts")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class AccountController {
     
     @Autowired

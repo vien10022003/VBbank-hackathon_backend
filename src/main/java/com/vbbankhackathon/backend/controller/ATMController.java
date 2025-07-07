@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/atms")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class ATMController {
     
     @Autowired

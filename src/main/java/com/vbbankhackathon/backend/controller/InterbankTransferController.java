@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/interbank-transfers")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class InterbankTransferController {
     
     @Autowired

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/ewallets")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class EWalletController {
     
     @Autowired

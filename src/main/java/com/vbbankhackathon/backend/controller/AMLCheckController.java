@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/aml-checks")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class AMLCheckController {
     
     @Autowired

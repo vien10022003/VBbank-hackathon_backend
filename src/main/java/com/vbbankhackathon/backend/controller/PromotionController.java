@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/promotions")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class PromotionController {
     
     @Autowired

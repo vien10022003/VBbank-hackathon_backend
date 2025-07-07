@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/branches")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class BranchController {
     
     @Autowired

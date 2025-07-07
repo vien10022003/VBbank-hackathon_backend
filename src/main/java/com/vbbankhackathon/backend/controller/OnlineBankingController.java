@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/online-banking")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class OnlineBankingController {
     
     @Autowired

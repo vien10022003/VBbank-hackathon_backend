@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/exchange-rates")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class ExchangeRateController {
     
     @Autowired

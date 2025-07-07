@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/credit-scores")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class CreditScoreController {
     
     @Autowired

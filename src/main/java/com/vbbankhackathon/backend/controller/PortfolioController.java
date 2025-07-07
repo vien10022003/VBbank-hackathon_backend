@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/portfolios")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*")
 public class PortfolioController {
     
     @Autowired

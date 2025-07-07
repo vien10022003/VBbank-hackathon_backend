@@ -44,10 +44,13 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		
+		<!-- Spring Security - Commented out to disable security -->
+		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		-->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -91,7 +94,8 @@
 			<version>${springdoc.version}</version>
 		</dependency>
 		
-		<!-- JSON Web Token -->
+		<!-- JSON Web Token - Commented out -->
+		<!--
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
@@ -109,6 +113,7 @@
 			<version>0.11.5</version>
 			<scope>runtime</scope>
 		</dependency>
+		-->
 		
 		<!-- JSON Processing -->
 		<dependency>
@@ -141,11 +146,14 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- Spring Security Test - Commented out -->
+		<!--
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		-->
 		
 		<dependency>
 			<groupId>org.testcontainers</groupId>
