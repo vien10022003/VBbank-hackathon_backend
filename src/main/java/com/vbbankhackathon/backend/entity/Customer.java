@@ -1,5 +1,6 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -61,10 +62,40 @@ public class Customer {
     private String preferredLanguage;
     
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("customer-accounts")
     private List<Account> accounts;
     
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("customer-loans")
     private List<Loan> loans;
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("customer-insurance")
+    private List<InsurancePolicy> insurancePolicies;
+    
+    @OneToMany(mappedBy = "linkedCustomer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("customer-ewallet")
+    private List<EWallet> eWallets;
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("customer-onlinebanking")
+    private List<OnlineBanking> onlineBankingAccounts;
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("customer-portfolios")
+    private List<Portfolio> portfolios;
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("customer-riskassessments")
+    private List<RiskAssessment> riskAssessments;
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("customer-kyc")
+    private List<KYC> kycDocuments;
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("customer-creditscores")
+    private List<CreditScore> creditScores;
     
     // Constructors, getters, setters
     public Customer() {}
@@ -89,6 +120,13 @@ public class Customer {
     public String getPreferredLanguage() { return preferredLanguage; }
     public List<Account> getAccounts() { return accounts; }
     public List<Loan> getLoans() { return loans; }
+    public List<InsurancePolicy> getInsurancePolicies() { return insurancePolicies; }
+    public List<EWallet> getEWallets() { return eWallets; }
+    public List<OnlineBanking> getOnlineBankingAccounts() { return onlineBankingAccounts; }
+    public List<Portfolio> getPortfolios() { return portfolios; }
+    public List<RiskAssessment> getRiskAssessments() { return riskAssessments; }
+    public List<KYC> getKycDocuments() { return kycDocuments; }
+    public List<CreditScore> getCreditScores() { return creditScores; }
     
     // Setters
     public void setCustomerId(Integer customerId) { this.customerId = customerId; }
@@ -110,4 +148,11 @@ public class Customer {
     public void setPreferredLanguage(String preferredLanguage) { this.preferredLanguage = preferredLanguage; }
     public void setAccounts(List<Account> accounts) { this.accounts = accounts; }
     public void setLoans(List<Loan> loans) { this.loans = loans; }
+    public void setInsurancePolicies(List<InsurancePolicy> insurancePolicies) { this.insurancePolicies = insurancePolicies; }
+    public void setEWallets(List<EWallet> eWallets) { this.eWallets = eWallets; }
+    public void setOnlineBankingAccounts(List<OnlineBanking> onlineBankingAccounts) { this.onlineBankingAccounts = onlineBankingAccounts; }
+    public void setPortfolios(List<Portfolio> portfolios) { this.portfolios = portfolios; }
+    public void setRiskAssessments(List<RiskAssessment> riskAssessments) { this.riskAssessments = riskAssessments; }
+    public void setKycDocuments(List<KYC> kycDocuments) { this.kycDocuments = kycDocuments; }
+    public void setCreditScores(List<CreditScore> creditScores) { this.creditScores = creditScores; }
 }

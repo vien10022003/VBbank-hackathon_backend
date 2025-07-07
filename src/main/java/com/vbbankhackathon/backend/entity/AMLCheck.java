@@ -1,5 +1,6 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -13,6 +14,7 @@ public class AMLCheck {
 
     @ManyToOne
     @JoinColumn(name = "TransactionID", referencedColumnName = "TransactionID")
+    @JsonBackReference("transaction-amlchecks")
     private Transaction transaction;
 
     @Column(name = "CheckDate")

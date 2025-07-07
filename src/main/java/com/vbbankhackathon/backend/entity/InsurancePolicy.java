@@ -1,5 +1,6 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ public class InsurancePolicy {
 
     @ManyToOne
     @JoinColumn(name = "CustomerID", referencedColumnName = "CustomerID")
+    @JsonBackReference("customer-insurance")
     private Customer customer;
 
     @Column(name = "PolicyType", length = 50)

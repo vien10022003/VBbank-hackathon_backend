@@ -1,5 +1,6 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -30,6 +31,7 @@ public class Card {
     
     @ManyToOne
     @JoinColumn(name = "AccountID", referencedColumnName = "AccountID", insertable = false, updatable = false)
+    @JsonBackReference("account-cards")
     private Account account;
     
     // Constructors, getters, setters

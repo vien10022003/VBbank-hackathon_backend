@@ -1,5 +1,7 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -44,13 +46,20 @@ public class Account {
     
     @ManyToOne
     @JoinColumn(name = "CustomerID", referencedColumnName = "CustomerID", insertable = false, updatable = false)
+    @JsonBackReference("customer-accounts")
     private Customer customer;
     
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("account-transactions")
     private List<Transaction> transactions;
     
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("account-cards")
     private List<Card> cards;
+    
+    @OneToMany(mappedBy = "fromAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("account-interbanktransfers")
+    private List<InterbankTransfer> interbankTransfers;
     
     // Constructors, getters, setters
     public Account() {}
@@ -70,6 +79,7 @@ public class Account {
     public Customer getCustomer() { return customer; }
     public List<Transaction> getTransactions() { return transactions; }
     public List<Card> getCards() { return cards; }
+    public List<InterbankTransfer> getInterbankTransfers() { return interbankTransfers; }
     
     // Setters
     public void setAccountId(Integer accountId) { this.accountId = accountId; }
@@ -86,4 +96,5 @@ public class Account {
     public void setCustomer(Customer customer) { this.customer = customer; }
     public void setTransactions(List<Transaction> transactions) { this.transactions = transactions; }
     public void setCards(List<Card> cards) { this.cards = cards; }
+    public void setInterbankTransfers(List<InterbankTransfer> interbankTransfers) { this.interbankTransfers = interbankTransfers; }
 }

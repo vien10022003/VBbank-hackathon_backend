@@ -1,5 +1,7 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -21,9 +23,11 @@ public class Branch {
     
     @OneToOne
     @JoinColumn(name = "ManagerID", referencedColumnName = "EmployeeID", insertable = false, updatable = false)
+    @JsonIgnore
     private Employee manager;
     
     @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("branch-employees")
     private List<Employee> employees;
     
     // Constructors, getters, setters

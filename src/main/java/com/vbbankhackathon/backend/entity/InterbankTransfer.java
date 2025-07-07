@@ -1,5 +1,6 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ public class InterbankTransfer {
 
     @ManyToOne
     @JoinColumn(name = "FromAccountID", referencedColumnName = "AccountID")
+    @JsonBackReference("account-interbanktransfers")
     private Account fromAccount;
 
     @Column(name = "ToBank", length = 100)

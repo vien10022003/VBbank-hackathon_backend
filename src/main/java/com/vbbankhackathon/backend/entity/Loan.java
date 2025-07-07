@@ -1,5 +1,7 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -44,10 +46,16 @@ public class Loan {
     
     @ManyToOne
     @JoinColumn(name = "CustomerID", referencedColumnName = "CustomerID", insertable = false, updatable = false)
+    @JsonBackReference("customer-loans")
     private Customer customer;
     
     @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("loan-collaterals")
     private List<Collateral> collaterals;
+    
+    @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("loan-debtcollections")
+    private List<DebtCollection> debtCollections;
     
     // Constructors, getters, setters
     public Loan() {}
@@ -66,6 +74,7 @@ public class Loan {
     public String getRepaymentSchedule() { return repaymentSchedule; }
     public Customer getCustomer() { return customer; }
     public List<Collateral> getCollaterals() { return collaterals; }
+    public List<DebtCollection> getDebtCollections() { return debtCollections; }
     
     // Setters
     public void setLoanId(Integer loanId) { this.loanId = loanId; }
@@ -81,4 +90,5 @@ public class Loan {
     public void setRepaymentSchedule(String repaymentSchedule) { this.repaymentSchedule = repaymentSchedule; }
     public void setCustomer(Customer customer) { this.customer = customer; }
     public void setCollaterals(List<Collateral> collaterals) { this.collaterals = collaterals; }
+    public void setDebtCollections(List<DebtCollection> debtCollections) { this.debtCollections = debtCollections; }
 }

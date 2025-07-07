@@ -1,5 +1,6 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
@@ -24,6 +25,7 @@ public class Collateral {
     
     @ManyToOne
     @JoinColumn(name = "LoanID", referencedColumnName = "LoanID", insertable = false, updatable = false)
+    @JsonBackReference("loan-collaterals")
     private Loan loan;
     
     // Constructors, getters, setters

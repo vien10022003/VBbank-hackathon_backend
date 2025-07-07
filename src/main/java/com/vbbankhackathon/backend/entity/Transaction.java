@@ -1,8 +1,11 @@
 package com.vbbankhackathon.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "Transactions")
@@ -40,7 +43,12 @@ public class Transaction {
     
     @ManyToOne
     @JoinColumn(name = "AccountID", referencedColumnName = "AccountID", insertable = false, updatable = false)
+    @JsonBackReference("account-transactions")
     private Account account;
+    
+    @OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("transaction-amlchecks")
+    private List<AMLCheck> amlChecks;
     
     // Constructors, getters, setters
     public Transaction() {}
@@ -57,6 +65,7 @@ public class Transaction {
     public String getCurrency() { return currency; }
     public BigDecimal getExchangeRate() { return exchangeRate; }
     public Account getAccount() { return account; }
+    public List<AMLCheck> getAmlChecks() { return amlChecks; }
     
     // Setters
     public void setTransactionId(Integer transactionId) { this.transactionId = transactionId; }
@@ -70,4 +79,5 @@ public class Transaction {
     public void setCurrency(String currency) { this.currency = currency; }
     public void setExchangeRate(BigDecimal exchangeRate) { this.exchangeRate = exchangeRate; }
     public void setAccount(Account account) { this.account = account; }
+    public void setAmlChecks(List<AMLCheck> amlChecks) { this.amlChecks = amlChecks; }
 }
