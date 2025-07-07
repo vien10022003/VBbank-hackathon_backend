@@ -54,4 +54,36 @@ public class Account {
     
     // Constructors, getters, setters
     public Account() {}
+    
+    // Getters
+    public Integer getAccountId() { return accountId; }
+    public Integer getCustomerId() { return customerId; }
+    public String getAccountType() { return accountType; }
+    public BigDecimal getBalance() { return balance; }
+    public LocalDate getOpeningDate() { return openingDate; }
+    public String getStatus() { return status; }
+    public BigDecimal getInterestRate() { return interestRate; }
+    public BigDecimal getCreditLimit() { return creditLimit; }
+    public BigDecimal getAvailableCredit() { return availableCredit; }
+    public BigDecimal getOverdraftLimit() { return overdraftLimit; }
+    public BigDecimal getMinimumBalance() { return minimumBalance; }
+    public Customer getCustomer() { return customer; }
+    public List<Transaction> getTransactions() { return transactions; }
+    public List<Card> getCards() { return cards; }
+    
+    // Setters
+    public void setAccountId(Integer accountId) { this.accountId = accountId; }
+    public void setCustomerId(Integer customerId) { this.customerId = customerId; }
+    public void setAccountType(String accountType) { this.accountType = accountType; }
+    public void setBalance(BigDecimal balance) { this.balance = balance; }
+    public void setOpeningDate(LocalDate openingDate) { this.openingDate = openingDate; }
+    public void setStatus(String status) { this.status = status; }
+    public void setInterestRate(BigDecimal interestRate) { this.interestRate = interestRate; }
+    public void setCreditLimit(BigDecimal creditLimit) { this.creditLimit = creditLimit; }
+    public void setAvailableCredit(BigDecimal availableCredit) { this.availableCredit = availableCredit; }
+    public void setOverdraftLimit(BigDecimal overdraftLimit) { this.overdraftLimit = overdraftLimit; }
+    public void setMinimumBalance(BigDecimal minimumBalance) { this.minimumBalance = minimumBalance; }
+    public void setCustomer(Customer customer) { this.customer = customer; }
+    public void setTransactions(List<Transaction> transactions) { this.transactions = transactions; }
+    public void setCards(List<Card> cards) { this.cards = cards; }
 }

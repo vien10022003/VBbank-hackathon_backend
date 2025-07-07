@@ -28,4 +28,20 @@ public class Branch {
     
     // Constructors, getters, setters
     public Branch() {}
+    
+    // Getters
+    public Integer getBranchId() { return branchId; }
+    public String getAddress() { return address; }
+    public Integer getManagerId() { return managerId; }
+    public String getPhoneNumber() { return phoneNumber; }
+    public Employee getManager() { return manager; }
+    public List<Employee> getEmployees() { return employees; }
+    
+    // Setters
+    public void setBranchId(Integer branchId) { this.branchId = branchId; }
+    public void setAddress(String address) { this.address = address; }
+    public void setManagerId(Integer managerId) { this.managerId = managerId; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    public void setManager(Employee manager) { this.manager = manager; }
+    public void setEmployees(List<Employee> employees) { this.employees = employees; }
 }

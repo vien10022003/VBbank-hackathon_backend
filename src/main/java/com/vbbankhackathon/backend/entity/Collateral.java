@@ -28,4 +28,20 @@ public class Collateral {
     
     // Constructors, getters, setters
     public Collateral() {}
+    
+    // Getters
+    public Integer getCollateralId() { return collateralId; }
+    public Integer getLoanId() { return loanId; }
+    public String getType() { return type; }
+    public BigDecimal getValue() { return value; }
+    public String getDescription() { return description; }
+    public Loan getLoan() { return loan; }
+    
+    // Setters
+    public void setCollateralId(Integer collateralId) { this.collateralId = collateralId; }
+    public void setLoanId(Integer loanId) { this.loanId = loanId; }
+    public void setType(String type) { this.type = type; }
+    public void setValue(BigDecimal value) { this.value = value; }
+    public void setDescription(String description) { this.description = description; }
+    public void setLoan(Loan loan) { this.loan = loan; }
 }

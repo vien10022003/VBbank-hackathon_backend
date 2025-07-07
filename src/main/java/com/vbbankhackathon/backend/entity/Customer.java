@@ -69,5 +69,45 @@ public class Customer {
     // Constructors, getters, setters
     public Customer() {}
     
-    // Getters and setters would go here
+    // Getters
+    public Integer getCustomerId() { return customerId; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+    public LocalDate getDateOfBirth() { return dateOfBirth; }
+    public String getAddress() { return address; }
+    public String getPhoneNumber() { return phoneNumber; }
+    public String getEmail() { return email; }
+    public String getSsn() { return ssn; }
+    public LocalDate getRegistrationDate() { return registrationDate; }
+    public String getStatus() { return status; }
+    public String getGender() { return gender; }
+    public String getMaritalStatus() { return maritalStatus; }
+    public String getOccupation() { return occupation; }
+    public BigDecimal getIncomeLevel() { return incomeLevel; }
+    public String getEducationLevel() { return educationLevel; }
+    public String getNationality() { return nationality; }
+    public String getPreferredLanguage() { return preferredLanguage; }
+    public List<Account> getAccounts() { return accounts; }
+    public List<Loan> getLoans() { return loans; }
+    
+    // Setters
+    public void setCustomerId(Integer customerId) { this.customerId = customerId; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+    public void setAddress(String address) { this.address = address; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    public void setEmail(String email) { this.email = email; }
+    public void setSsn(String ssn) { this.ssn = ssn; }
+    public void setRegistrationDate(LocalDate registrationDate) { this.registrationDate = registrationDate; }
+    public void setStatus(String status) { this.status = status; }
+    public void setGender(String gender) { this.gender = gender; }
+    public void setMaritalStatus(String maritalStatus) { this.maritalStatus = maritalStatus; }
+    public void setOccupation(String occupation) { this.occupation = occupation; }
+    public void setIncomeLevel(BigDecimal incomeLevel) { this.incomeLevel = incomeLevel; }
+    public void setEducationLevel(String educationLevel) { this.educationLevel = educationLevel; }
+    public void setNationality(String nationality) { this.nationality = nationality; }
+    public void setPreferredLanguage(String preferredLanguage) { this.preferredLanguage = preferredLanguage; }
+    public void setAccounts(List<Account> accounts) { this.accounts = accounts; }
+    public void setLoans(List<Loan> loans) { this.loans = loans; }
 }

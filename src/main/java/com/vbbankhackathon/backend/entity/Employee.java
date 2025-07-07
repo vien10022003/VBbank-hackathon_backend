@@ -38,4 +38,26 @@ public class Employee {
     
     // Constructors, getters, setters
     public Employee() {}
+    
+    // Getters
+    public Integer getEmployeeId() { return employeeId; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+    public String getPosition() { return position; }
+    public String getDepartment() { return department; }
+    public Integer getBranchId() { return branchId; }
+    public LocalDate getHireDate() { return hireDate; }
+    public BigDecimal getSalary() { return salary; }
+    public Branch getBranch() { return branch; }
+    
+    // Setters
+    public void setEmployeeId(Integer employeeId) { this.employeeId = employeeId; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setPosition(String position) { this.position = position; }
+    public void setDepartment(String department) { this.department = department; }
+    public void setBranchId(Integer branchId) { this.branchId = branchId; }
+    public void setHireDate(LocalDate hireDate) { this.hireDate = hireDate; }
+    public void setSalary(BigDecimal salary) { this.salary = salary; }
+    public void setBranch(Branch branch) { this.branch = branch; }
 }
