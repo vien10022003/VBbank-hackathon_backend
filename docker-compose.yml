@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: vbbank-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: vbbankhackathon
+      MYSQL_USER: vbbank_user
+      MYSQL_PASSWORD: vbbank_password
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./initial_data.sql:/docker-entrypoint-initdb.d/initial_data.sql
+    networks:
+      - vbbank-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # VBBank Backend Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vbbank-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      # Spring Profile
+      SPRING_PROFILES_ACTIVE: docker
+      
+      # Database configuration
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: vbbankhackathon
+      MYSQL_USERNAME: vbbank_user
+      MYSQL_PASSWORD: vbbank_password
+      
+      # Application configuration  
+      SERVER_PORT: 8080
+      SPRING_APPLICATION_NAME: VBBank-Hackathon-Backend
+      
+      # Optional: Override defaults if needed
+      # SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # SPRING_JPA_SHOW_SQL: false
+    ports:
+      - "8080:8080"
+    networks:
+      - vbbank-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  vbbank-network:
+    driver: bridge

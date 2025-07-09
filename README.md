@@ -132,6 +132,96 @@ USE vbbankhackathon;
 SOURCE /path/to/initial_data.sql;
 ```
 
+## Docker Deployment
+
+### Yêu cầu Docker:
+- **Docker** 20.10+ 
+- **Docker Compose** 2.0+
+
+### 1. Chạy với Docker Compose (Khuyến nghị)
+
+Docker Compose sẽ tự động tạo và chạy cả MySQL và Backend application:
+
+```bash
+# Build và chạy tất cả services
+docker-compose up -d
+
+# Xem logs
+docker-compose logs -f app
+
+# Dừng services
+docker-compose down
+
+# Dừng và xóa volumes (xóa dữ liệu)
+docker-compose down -v
+```
+
+### 2. Build Docker Image riêng lẻ
+
+```bash
+# Build image
+docker build -t vbbank-backend .
+
+# Chạy container (cần MySQL riêng)
+docker run -d \
+  --name vbbank-app \
+  -p 8080:8080 \
+  -e SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/vbbankhackathon \
+  -e SPRING_DATASOURCE_USERNAME=root \
+  -e SPRING_DATASOURCE_PASSWORD=123456 \
+  vbbank-backend
+```
+
+### 3. Cấu hình Environment Variables
+
+Các biến môi trường quan trọng:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `SPRING_DATASOURCE_URL` | `jdbc:mysql://mysql:3306/vbbankhackathon` | Database URL |
+| `SPRING_DATASOURCE_USERNAME` | `vbbank_user` | Database username |
+| `SPRING_DATASOURCE_PASSWORD` | `vbbank_password` | Database password |
+| `SERVER_PORT` | `8080` | Application port |
+| `SPRING_JPA_HIBERNATE_DDL_AUTO` | `update` | Hibernate DDL mode |
+
+### 4. Health Check
+
+Kiểm tra trạng thái container:
+
+```bash
+# Kiểm tra container đang chạy
+docker-compose ps
+
+# Kiểm tra health status
+curl http://localhost:8080/actuator/health
+
+# Xem logs của application
+docker-compose logs app
+
+# Xem logs của database
+docker-compose logs mysql
+```
+
+### 5. Production Deployment
+
+Để deploy production, tạo file `docker-compose.prod.yml`:
+
+```yaml
+version: '3.8'
+services:
+  app:
+    build: .
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_JPA_SHOW_SQL: false
+      # Thêm các config production khác
+```
+
+Chạy với:
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+```
+
 ## Sử dụng API
 
 ### Base URL
@@ -142,7 +232,7 @@ http://localhost:8080
 ### API Documentation
 Sau khi chạy ứng dụng, truy cập Swagger UI tại:
 ```
-http://localhost:8080/swagger-ui.html
+http://localhost:8080/swagger-ui/index.html
 ```
 
 ### Các API endpoints chính:
@@ -244,6 +334,12 @@ mvnw.cmd verify
 4. **Lỗi Maven:**
    - Kiểm tra Maven: `mvn -version`
    - Sử dụng wrapper: `mvnw.cmd` (Windows) hoặc `./mvnw` (Linux/Mac)
+
+5. **Lỗi Docker:**
+   - Kiểm tra Docker đã chạy: `docker version`
+   - Kiểm tra Docker Compose: `docker-compose version`
+   - Xem logs container: `docker-compose logs [service-name]`
+   - Reset containers: `docker-compose down -v && docker-compose up -d`
 
 ## Đóng góp
 
