@@ -24,6 +24,12 @@ public class TransactionController {
         return ResponseEntity.ok(transactions);
     }
     
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<List<Transaction>> getTransactionsByCustomerId(@PathVariable Integer customerId) {
+        List<Transaction> transactions = transactionRepository.findByCustomerId(customerId);
+        return ResponseEntity.ok(transactions);
+    }
+    
     @GetMapping("/{id}")
     public ResponseEntity<Transaction> getTransactionById(@PathVariable Integer id) {
         Optional<Transaction> transaction = transactionRepository.findById(id);
