@@ -139,6 +139,13 @@
 			<version>3.2.0</version>
 		</dependency>
 		
+		<!-- Java Faker for generating fake data -->
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		
 		<!-- Testing -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
